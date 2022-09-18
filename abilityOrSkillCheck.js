@@ -4,6 +4,11 @@ async function main() {
 
   // Choose roll type dialog
   let diagHTML = `
+  <style>
+    .ability {
+      color: blue;
+    }
+  </style>
 <div id="myForm">
   <fieldset>
     <legend>Roll Type</legend>
@@ -17,102 +22,102 @@ async function main() {
     </div>
   </fieldset>
   <fieldset>
-    <legend>Attribute</legend>
+    <legend>Abilities and skills</legend>
     <div>
-      <input type="radio" id="Acrobatics" name="abilityType" value="acr" class="skill">
+      <input type="radio" id="Acrobatics" name="abilityType" value="acr">
       <label for="Acrobatics">Acrobatics</label>
     </div>
     <div>
-      <input type="radio" id="AnimalHandling" name="abilityType" value="ani" class="skill">
+      <input type="radio" id="AnimalHandling" name="abilityType" value="ani">
       <label for="AnimalHandling">Animal Handling</label>
     </div>
     <div>
-      <input type="radio" id="Arcana" name="abilityType" value="arc" class="skill">
+      <input type="radio" id="Arcana" name="abilityType" value="arc">
       <label for="Arcana">Arcana</label>
     </div>
     <div>
-      <input type="radio" id="Athletics" name="abilityType" value="ath" class="skill">
+      <input type="radio" id="Athletics" name="abilityType" value="ath">
       <label for="Athletics">Athletics</label>
     </div>
     <div>
-      <input type="radio" id="Charisma" name="abilityType" value="cha" class="ability">
-      <label for="Charisma">Charisma</label>
+      <input type="radio" id="Charisma" name="abilityType" value="cha">
+      <label for="Charisma" class="ability">Charisma</label>
     </div>
     <div>
       <input type="radio" id="Constitution" name="abilityType" value="con">
-      <label for="Constitution">Constitution</label>
+      <label for="Constitution" class="ability">Constitution</label>
     </div>
     <div>
-      <input type="radio" id="Deception" name="abilityType" value="dec" class="skill">
+      <input type="radio" id="Deception" name="abilityType" value="dec">
       <label for="Deception">Deception</label>
     </div>
     <div>
-      <input type="radio" id="Dexterity" name="abilityType" value="dex" class="ability">
-      <label for="Dexterity">Dexterity</label>
+      <input type="radio" id="Dexterity" name="abilityType" value="dex">
+      <label for="Dexterity" class="ability">Dexterity</label>
     </div>
     <div>
-      <input type="radio" id="History" name="abilityType" value="his" class="skill">
+      <input type="radio" id="History" name="abilityType" value="his">
       <label for="History">History</label>
     </div>
     <div>
-      <input type="radio" id="Insight" name="abilityType" value="ins" class="skill">
+      <input type="radio" id="Insight" name="abilityType" value="ins">
       <label for="Insight">Insight</label>
     </div>
     <div>
-      <input type="radio" id="Intelligence" name="abilityType" value="int" class="ability">
-      <label for="Intelligence">Intelligence</label>
+      <input type="radio" id="Intelligence" name="abilityType" value="int">
+      <label for="Intelligence" class="ability">Intelligence</label>
     </div>
     <div>
-      <input type="radio" id="Intimidation" name="abilityType" value="itm" class="skill">
+      <input type="radio" id="Intimidation" name="abilityType" value="itm">
       <label for="Intimidation">Intimidation</label>
     </div>
     <div>
-      <input type="radio" id="Investigation" name="abilityType" value="inv" class="skill">
+      <input type="radio" id="Investigation" name="abilityType" value="inv">
       <label for="Investigation">Investigation</label>
     </div>
     <div>
-      <input type="radio" id="Medicine" name="abilityType" value="med" class="skill">
+      <input type="radio" id="Medicine" name="abilityType" value="med">
       <label for="Medicine">Medicine</label>
     </div>
     <div>
-      <input type="radio" id="Nature" name="abilityType" value="nat" class="skill">
+      <input type="radio" id="Nature" name="abilityType" value="nat">
       <label for="Nature">Nature</label>
     </div>
     <div>
-      <input type="radio" id="Perception" name="abilityType" value="prc" class="skill">
+      <input type="radio" id="Perception" name="abilityType" value="prc">
       <label for="Perception">Perception</label>
     </div>
     <div>
-      <input type="radio" id="Performance" name="abilityType" value="prf" class="skill">
+      <input type="radio" id="Performance" name="abilityType" value="prf">
       <label for="Performance">Performance</label>
     </div>
     <div>
-      <input type="radio" id="Persuasion" name="abilityType" value="per" class="skill">
+      <input type="radio" id="Persuasion" name="abilityType" value="per">
       <label for="Persuasion">Persuasion</label>
     </div>
     <div>
-      <input type="radio" id="Religion" name="abilityType" value="rel" class="skill">
+      <input type="radio" id="Religion" name="abilityType" value="rel">
       <label for="Religion">Religion</label>
     </div>
     <div>
-      <input type="radio" id="Sleight of Hand" name="abilityType" value="slt" class="skill">
+      <input type="radio" id="Sleight of Hand" name="abilityType" value="slt">
       <label for="Sleight of Hand">Sleight of Hand</label>
     </div>
     <div>
-      <input type="radio" id="Stealth" name="abilityType" value="ste" class="skill">
+      <input type="radio" id="Stealth" name="abilityType" value="ste">
       <label for="Stealth">Stealth</label>
     </div>
     <div>
-      <input type="radio" id="Strength" name="abilityType" value="str" class="ability">
-      <label for="Strength">Strength</label>
+      <input type="radio" id="Strength" name="abilityType" value="str">
+      <label for="Strength" class="ability">Strength</label>
     </div>
     <div>
-      <input type="radio" id="Survival" name="abilityType" value="sur" class="skill">
+      <input type="radio" id="Survival" name="abilityType" value="sur">
       <label for="Survival">Survival</label>
     </div>
     <div>
-      <input type="radio" id="Wisdom" name="abilityType" value="wis" class="ability">
-      <label for="SWisdom">Wisdom</label>
+      <input type="radio" id="Wisdom" name="abilityType" value="wis">
+      <label for="SWisdom" class="ability">Wisdom</label>
     </div>
   </fieldset>
   <fieldset>
@@ -133,7 +138,7 @@ async function main() {
   <fieldset>
     <legend>Situational Bonus</legend>
     <div>
-      <input type="text" id="SituationalBonus" name="SituationalBonus">
+      <input type="text" id="SituationalBonus" name="SituationalBonus" placeholder="e.g. 10, -10">
     </div>
   </fieldset>
 </div>`;
@@ -243,7 +248,7 @@ async function main() {
           const data = {
             user: game.user._id,
             speaker: {
-              alias: `${canvas.tokens.controlled[0].actor.data.data.name} 💪`
+              alias: `${canvas.tokens.controlled[0].actor.data.data.name}`
             },
             flavor: `${myObject.nameLong} ${myObject.rollType}`
           }
