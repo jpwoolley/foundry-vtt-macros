@@ -13,11 +13,11 @@ async function main() {
   <fieldset>
     <legend>Roll Type</legend>
     <div>
-      <input type="radio" id="Saving" name="rollType" value="Saving Throw" checked>
+      <input type="radio" id="Saving" name="checkType" value="Saving Throw" checked>
       <label for="Saving">Saving throw</label>
     </div>
     <div>
-      <input type="radio" id="Skill" name="rollType" value="Ability Check">
+      <input type="radio" id="Skill" name="checkType" value="Skill Check">
       <label for="Skill">Skill check</label>
     </div>
   </fieldset>
@@ -123,15 +123,15 @@ async function main() {
   <fieldset>
     <legend>Level</legend>
     <div>
-      <input type="radio" id="Disadvantage" name="levelType" value="Disadvantage">
+      <input type="radio" id="Disadvantage" name="rollType" value="Disadvantage">
       <label for="Disadvantage">Disadvantage</label>
     </div>
     <div>
-      <input type="radio" id="Normal" name="levelType" value="Normal" checked>
+      <input type="radio" id="Normal" name="rollType" value="Normal" checked>
       <label for="Normal">Normal</label>
     </div>
     <div>
-      <input type="radio" id="Advantage" name="levelType" value="Advantage">
+      <input type="radio" id="Advantage" name="rollType" value="Advantage">
       <label for="Advantage">Advantage</label>
     </div>
   </fieldset>
@@ -158,17 +158,19 @@ async function main() {
         callback: async (html) => {
           const myForm = document.getElementById("myForm")
 
+          const selectedSKill = myForm.querySelector('input[name="abilityType"]:checked').value;
+
           // define object for holding data
           const myObject = {
-            'checkType': myForm.querySelector('input[name="rollType"]:checked').value,
-            'nameShort': myForm.querySelector('input[name="abilityType"]:checked').value,
-            'rollType': myForm.querySelector('input[name="levelType"]:checked').value,
+            'checkType': myForm.querySelector('input[name="checkType"]:checked').value,
+            'nameShort': selectedSKill,
+            'rollType': myForm.querySelector('input[name="rollType"]:checked').value,
             'situationalBonus': document.getElementById('SituationalBonus').value || 0,
-            'modifier': tokenMerged[selectedAbilityType].mod,
-            'proficiencyBonus': tokenMerged[selectedAbilityType].prof._baseProficiency || tokenMerged[selectedAbilityType].checkProf._baseProficiency
+            'modifier': tokenMerged[selectedSKill].mod,
+            'proficiencyBonus': tokenMerged[selectedSKill].prof?._baseProficiency || tokenMerged[selectedSKill].checkProf._baseProficiency
           }
 
-          switch (selectedAbilityType) {
+          switch (myObject.nameShort) {
             case 'acr':
               myObject.nameLong = 'Acrobatics';
               break;
@@ -250,19 +252,19 @@ async function main() {
             speaker: {
               alias: `${canvas.tokens.controlled[0].actor.data.data.name}`
             },
-            flavor: `${myObject.nameLong} ${myObject.rollType}`
+            flavor: `${myObject.nameLong} ${myObject.checkType}`
           }
 
           // the roll!
-          if (selectedRollType === "Skill") {
+          if (myObject.checkType === "Skill Check") {
             new Roll(`1d20 + ${myObject.modifier} + ${myObject.situationalBonus} + ${myObject.proficiencyBonus}`).toMessage(data);
-            if (selectedLevelType !== 'Normal') {
+            if (myObject.rollType !== 'Normal') {
               new Roll(`1d20 + ${myObject.modifier} + ${myObject.situationalBonus} + ${myObject.proficiencyBonus}`).toMessage(data);
             }
           }
-          if (selectedRollType === "Saving") {
+          if (myObject.checkType === "Saving Throw") {
             new Roll(`1d20 + ${myObject.modifier} + ${myObject.proficiencyBonus} + ${myObject.situationalBonus}`).toMessage(data);
-            if (selectedLevelType !== 'Normal') {
+            if (myObject.rollType !== 'Normal') {
               new Roll(`1d20 + ${myObject.modifier} + ${myObject.proficiencyBonus} + ${myObject.situationalBonus}`).toMessage(data);
             }
           }
