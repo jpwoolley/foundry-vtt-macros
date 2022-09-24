@@ -9,7 +9,7 @@ if (BARBLEVEL >= 20){damage = "4d6"};
 const content = `
 <div>
 <h2>Power of the SEEAAA! 🌊</h2>
-<p>${_token.actor.name} summons the power of the SEEAAA! He emanate a stormy, magical aura for 10 feet in every direction (but not through total cover).</p>
+<p>${_token.actor.name} summons the power of the SEEAAA! They emanate a stormy, magical aura for 10 feet in every direction (but not through total cover).</p>
 <p>${_token.actor.name} chooses one other creature to target. The target must make a <strong style="color:darkred">Dexterity saving throw of at least ${SAVINGTHROW}</strong>. The target takes <strong style="color:blue">${damage} lightning damage </strong>on a failed save, or half as much damage on a successful one.</p>
 <br>
 <p>Click to roll: [[/roll 1d20 + @dex]]</p>
