@@ -264,11 +264,11 @@ async function main() {
 
           // check for any effects
           // if a barbarian and raging and it's a stength skill check
-          if((_token.actor.classes.hasOwnProperty('barbarian')) && (_token.actor.effects.contents.find(x => x.label == 'Rage').disabled === false) && (abilityOrSkillFullName === 'Strength')){
+          if((_token.actor.classes.hasOwnProperty('barbarian')) && (_token.actor.effects.contents.find(x => x.label == 'Rage').disabled === false) && (selectedAbility === 'str')){
             rollTypeFormula = '2d20kh';
             data.flavor = `${abilityOrSkillFullName} ${selectedCheckType} (Advantage because Rage effect is active)`
           }
-          
+
           // the roll!
           if (selectedCheckType === "Skill Check") {
             new Roll(`${rollTypeFormula} + ${modifer} + ${selectedSituationalBonus} + ${proficiencyBonus}`).toMessage(data);
